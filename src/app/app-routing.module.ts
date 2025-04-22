@@ -23,7 +23,11 @@ const routes: Routes = [
   {
     path: 'register',
     component:RegisterComponent
-  },
+  },{
+    path: '**',
+    redirectTo: 'loader',
+    pathMatch: 'full'
+  }
 ];
 
 @NgModule({

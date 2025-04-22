@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Register</ion-title>
+    <ion-title>Registration</ion-title>
   </ion-toolbar>
 </ion-header>
 <ion-content class="ion-padding">
@@ -41,7 +41,7 @@
       <ion-list>
         <ion-item>
           <ion-label>Confirm Password</ion-label>
-          <input type="text" formControlName="cpassword">
+          <input type="password" formControlName="cpassword">
 
         </ion-item>
       </ion-list>
@@ -56,5 +56,5 @@
     </form>
 
   </div>
-
+  <!-- <ion-toast [isOpen]="warning" mode="ios" color="isSuccess ? 'success' : 'danger'" message="{{wmessage}}" [duration]="5000" (didDismiss)="warningClose()"></ion-toast> -->
 </ion-content>
