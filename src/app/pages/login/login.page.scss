@@ -1,0 +1,87 @@
+.login-container{
+    justify-content: center;
+    align-items: center;
+
+}
+.login-list {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    padding: 16px;
+    height: 100%;
+
+  }
+
+.box{
+    padding: 1rem;
+}
+.register, .header{
+    padding: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+span{
+    font-size: 1.3em;
+}
+  ion-item {
+    margin-bottom: 16px;
+    --box-shadow: none;
+    --border-style: none;
+  }
+  
+  ion-input {
+    --padding-start: 10px;
+    --padding-end: 10px;
+    --border-radius: 8px;
+    
+  }
+  
+  ion-button {
+    --border-radius: 12px;
+    --background: var(--ion-color-primary);
+    --color: #fff;
+    font-size: 16px;
+    height: 48px;
+  }
+  
+  ion-button.login-button {
+    margin-top: 24px;
+    --background: var(--ion-color-primary);
+  }
+  
+  ion-button:active {
+    --background: var(--ion-color-dark);
+  }
+  
+  ion-item:last-child {
+    margin-bottom: 0;
+  }
+  
+  /* Optional: Make inputs more mobile-friendly */
+  ion-input {
+    font-size: 16px;
+    padding-left: 16px;
+    padding-right: 16px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    transition: border 0.3s ease;
+  }
+  
+  ion-input:focus-within {
+    border: 1px solid var(--ion-color-primary);
+  }
+  
+  /* Mobile-specific styling */
+  @media (max-width: 600px) {
+    .login-list {
+      padding: 10px;
+    }
+    
+    ion-button {
+      font-size: 18px;
+      height: 50px;
+    }
+  }
+  

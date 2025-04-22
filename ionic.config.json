@@ -1,0 +1,7 @@
+{
+  "name": "Mediaid-Ionic_mobile",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

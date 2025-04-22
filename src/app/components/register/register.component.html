@@ -1,0 +1,60 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Register</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="ion-padding">
+  <div class="form-container">
+    <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
+      <ion-list>
+        <ion-item>
+          <ion-label>Name</ion-label>
+          <input type="text" formControlName="name">
+
+        </ion-item>
+      </ion-list>
+
+      <ion-list>
+        <ion-item>
+          <ion-label>Email</ion-label>
+          <input type="email" formControlName="email">
+
+        </ion-item>
+      </ion-list>
+
+      <ion-list>
+        <ion-item>
+          <ion-label>Age</ion-label>
+          <input type="number" formControlName="age">
+
+        </ion-item>
+      </ion-list>
+
+      <ion-list>
+        <ion-item>
+          <ion-label>Password</ion-label>
+          <input type="password" formControlName="password">
+
+        </ion-item>
+      </ion-list>
+
+      <ion-list>
+        <ion-item>
+          <ion-label>Confirm Password</ion-label>
+          <input type="text" formControlName="cpassword">
+
+        </ion-item>
+      </ion-list>
+
+      <ion-list>
+        <ion-item>
+          <div class="button-container">
+            <ion-button expand="block" type="submit">Register</ion-button>
+          </div>
+        </ion-item>
+      </ion-list>
+    </form>
+
+  </div>
+
+</ion-content>
