@@ -7,10 +7,25 @@ import { Component, CUSTOM_ELEMENTS_SCHEMA, OnInit } from '@angular/core';
   schemas:[CUSTOM_ELEMENTS_SCHEMA]
 })
 export class MedicinePagePage implements OnInit {
+  deleteActions:boolean=false
+  editActions:boolean=false
 
   constructor() { }
 
   ngOnInit() {
+  }
+
+  deleteAction(){
+    this.deleteActions=true
+  }
+  clear(){
+    this.deleteActions=this.editActions = false
+  }
+  editAction(){
+    this.editActions=true
+  }
+  addMedicine(){
+    
   }
 
 }

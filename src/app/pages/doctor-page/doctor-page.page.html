@@ -7,13 +7,14 @@
 <ion-content class="ion-padding">
   <div class="card-grid">
 
-    <h2 class="form-title">Doctors</h2>
-
     <!-- Iterating view -->
     <ion-card class="interactive-card gradient-blue">
-      <div class="badge">
-        <ion-button class="badge-icon">
+      <div *ngIf="deleteActions || editActions" class="badge">
+        <ion-button *ngIf="deleteActions" class="badge-icon">
           <ion-icon name="trash"></ion-icon>
+        </ion-button>  
+        <ion-button *ngIf="editActions" class="badge-icon">
+          <ion-icon name="pencil"></ion-icon>
         </ion-button>  
       </div>
       <ion-card-header>
@@ -27,19 +28,24 @@
     
   </div>
 
+  <ion-fab *ngIf="deleteActions || editActions" slot="fixed" vertical="bottom" horizontal="start">
+    <ion-fab-button (click)="clear()">
+      <ion-icon name="close"></ion-icon>
+    </ion-fab-button>
+</ion-fab>
   <!-- Fab buttons -->
   <ion-fab slot="fixed" vertical="bottom" horizontal="end">
     <ion-fab-button>
       <ion-icon name="chevron-up-circle"></ion-icon>
     </ion-fab-button>
     <ion-fab-list side="top">
-      <ion-fab-button>
+      <ion-fab-button (click)="editAction()">
         <ion-icon name="pencil"></ion-icon>
       </ion-fab-button>
-      <ion-fab-button>
+      <ion-fab-button (click)="deleteAction()">
         <ion-icon name="trash"></ion-icon>
       </ion-fab-button>
-      <ion-fab-button>
+      <ion-fab-button (click)="addDoctor()">
         <ion-icon name="add"></ion-icon>
       </ion-fab-button>
     </ion-fab-list>

@@ -1,6 +1,6 @@
 <ion-content [fullscreen]="true" class="ion-padding custom-bg">
+  <ion-icon name="arrow-back"size="large" (click)="goBack()"></ion-icon>
   <div class="form-container">
-
     <div *ngFor="let item of doctorsModel.subPhases">
       <h2 *ngIf="item.id=='header'" class="form-title">{{item.label}}</h2>
       <p *ngIf="item.id=='subheader'" class="form-subtitle">{{item.label}}</p>

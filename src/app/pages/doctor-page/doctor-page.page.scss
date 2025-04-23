@@ -42,16 +42,21 @@
       --background-hover: #a3e681;
       --border-radius: 15px;
       --box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.3), 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
-      --color: rgb(125, 125, 125);
+      --color: rgb(25, 113, 172);
     }
   
   .badge{
       display: flex;
       flex-direction: row-reverse;
-      margin-bottom: -3.5rem;
+      margin-bottom: -2.7rem;
       margin-right: 0.5rem;
   }
   .badge-icon{
-      --color:#fff
+      --color:#fff;
+      --border-radius: 13px;
   }
+
+ion-toolbar{
+  --background:linear-gradient(135deg, #a1c4fd, #c2e9fb);;
   
+}
