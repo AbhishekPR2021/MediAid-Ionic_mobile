@@ -1,0 +1,46 @@
+{
+    "subPhases":[        
+        {
+            "id":"header",
+            "label":"Doctor Details",
+            "type":"p"
+        }, 
+        {
+            "id":"subheader",
+            "label":"Please fill out all details",
+            "type":"p"
+        },
+        {
+            "id":"name",
+            "label":"Name of Doctor",
+            "type":"text"
+        },
+
+        {
+            "id":"name",
+            "label":"Name of Doctor",
+            "type":"text"
+        },
+        {
+            "id":"address",
+            "label":"Address",
+            "type":"text"
+        },
+        {
+            "id":"phoneNumber",
+            "label":"Phone Number",
+            "type":"number"
+        },
+        {
+            "id":"specialized",
+            "label":"Specialized in",
+            "type":"text"
+        },
+        {
+            "id":"save",
+            "label":"Save",
+            "type":"button"
+        }
+        
+    ]
+    }

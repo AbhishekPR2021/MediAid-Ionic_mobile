@@ -1,0 +1,57 @@
+.form-title {
+    font-size: 1.8rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+  }
+  .ion-padding{
+    background: linear-gradient(135deg, #2c3e50, #4ca1af); /* Cool gradient background */
+    padding: 20px;
+  }
+  
+  .card-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  
+  .interactive-card {
+    color: white;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-radius: 16px;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+  }
+  
+  .interactive-card:hover {
+    transform: scale(1.02);
+    box-shadow: 0 12px 24px rgba(0,0,0,0.3);
+  }
+  
+  /* Gradient themes for the cards */
+  .gradient-blue {
+    background: linear-gradient(135deg, #00c6ff, #0072ff);
+  }
+  .gradient-purple {
+    background: linear-gradient(135deg, #b24592, #f15f79);
+  }
+  .gradient-green {
+    background: linear-gradient(135deg, #11998e, #38ef7d);
+  }
+  ion-fab-button {
+      --background: #b7f399;
+      --background-activated: #87d361;
+      --background-hover: #a3e681;
+      --border-radius: 15px;
+      --box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.3), 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      --color: rgb(125, 125, 125);
+    }
+  
+  .badge{
+      display: flex;
+      flex-direction: row-reverse;
+      margin-bottom: -3.5rem;
+      margin-right: 0.5rem;
+  }
+  .badge-icon{
+      --color:#fff
+  }
+  

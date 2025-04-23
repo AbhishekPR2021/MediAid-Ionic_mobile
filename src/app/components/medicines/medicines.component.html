@@ -1,0 +1,20 @@
+<ion-content [fullscreen]="true" class="ion-padding custom-bg">
+  <div class="form-container">
+
+    <div *ngFor="let item of medicineModel.subPhases">
+      <h2 *ngIf="item.id=='header'" class="form-title">{{item.label}}</h2>
+      <p *ngIf="item.id=='subheader'" class="form-subtitle">{{item.label}}</p>
+  
+      <ion-item *ngIf="item.id !=='header' && item.id !=='subheader'" class="custom-item">
+        <ion-label position="floating">{{item.label}}</ion-label>
+        <ion-input type="{{item.type}}"></ion-input>
+      </ion-item>
+      <ion-button *ngIf="item.type == 'button'" expand="block" color="primary" class="custom-btn">
+        {{item.label}}
+      </ion-button>
+    </div>
+
+
+    
+  </div>
+</ion-content>

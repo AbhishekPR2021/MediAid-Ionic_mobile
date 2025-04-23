@@ -1,0 +1,49 @@
+{
+    "subPhases":[
+        {
+            "id":"header",
+            "label":"Emergency Details",
+            "type":"p"
+        }, 
+        {
+            "id":"subheader",
+            "label":"Please fill out all details",
+            "type":"p"
+        },
+        {
+            "id":"name",
+            "label":"User Name",
+            "type":"text"
+        },
+        {
+            "id":"phoneNumber",
+            "label":"Phone Number",
+            "type":"number"
+        },
+        {
+            "id":"age",
+            "label":"Age",
+            "type":"number"
+        },
+        {
+            "id":"address",
+            "label":"Address",
+            "type":"text"
+        },
+        {
+            "id":"location",
+            "label":"Location",
+            "type":"location"
+        },
+        {
+            "id":"report",
+            "label":"Report Data",
+            "type":"attachments"
+        },
+        {
+            "id":"save",
+            "label":"Save",
+            "type":"button"
+        }
+    ]
+    }

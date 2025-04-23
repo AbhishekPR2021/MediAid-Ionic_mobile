@@ -1,0 +1,53 @@
+.custom-bg {
+    --background: linear-gradient(135deg, #74ebd5 0%, #acb6e5 100%);
+  }
+  
+  .form-container {
+    max-width: 400px;
+    margin: auto;
+    margin-top: 10%;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 1.5rem;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(10px);
+    color: #fff;
+    text-align: center;
+  }
+  
+  .form-title {
+    font-size: 1.8rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+  }
+  
+  .form-subtitle {
+    font-size: 1rem;
+    margin-bottom: 2rem;
+    opacity: 0.85;
+  }
+  
+  .custom-item {
+    --background: transparent;
+    --color: #fff;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 0.75rem;
+    margin-bottom: 1.25rem;
+    padding: 0.5rem;
+  }
+  
+  ion-label {
+    color: #fff;
+  }
+  
+  ion-input {
+    color: #fff;
+  }
+  
+  .custom-btn {
+    --border-radius: 20px;
+    --box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2);
+    --background: #6a11cb;
+    --background-activated: #2575fc;
+  }
+  

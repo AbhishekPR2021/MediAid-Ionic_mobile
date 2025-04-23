@@ -1,0 +1,49 @@
+{
+"subPhases":[
+    {
+        "id":"header",
+        "label":"User Registration",
+        "type":"p"
+    }, 
+    {
+        "id":"subheader",
+        "label":"Please fill out all details",
+        "type":"p"
+    },
+    {
+        "id":"name",
+        "label":"Name",
+        "type":"text"
+    },
+    {
+        "id":"email",
+        "label":"Email",
+        "type":"email"
+    },
+    {
+        "id":"age",
+        "label":"Age",
+        "type":"number"
+    },
+    {
+        "id":"bloodGroup",
+        "label":"Blood Group",
+        "type":"text"
+    },
+    {
+        "id":"phoneNumber",
+        "label":"Phone Number",
+        "type":"number"
+    },
+    {
+        "id":"password",
+        "label":"Password",
+        "type":"password"
+    },
+    {
+        "id":"cpassword",
+        "label":"Confirm Password",
+        "type":"password"
+    }
+]
+}

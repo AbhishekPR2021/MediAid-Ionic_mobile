@@ -1,0 +1,36 @@
+.emergency-content {
+    --background: #f0f4f8; /* Soft blue-grey */
+    padding: 16px;
+  }
+  
+  .emergency-card {
+    border-radius: 16px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    background: #ffffff; /* Clean white card */
+  }
+  
+  ion-card-title {
+    color: #3a3a3a;
+    font-weight: 600;
+    text-align: center;
+  }
+  
+  ion-item h2 {
+    color: #0077b6; /* Calming blue for headings */
+    margin: 0;
+  }
+  
+  ion-item p {
+    color: #333;
+    font-size: 14px;
+    margin-top: 4px;
+  }
+  
+  .btn-group {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 0 12px;
+  }
+  

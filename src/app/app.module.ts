@@ -9,6 +9,9 @@ import { AppRoutingModule } from './app-routing.module';
 import { LoaderPage } from './pages/loader/loader.page';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RegisterComponent } from './components/register/register.component';
+import { HttpClientModule } from '@angular/common/module.d-CnjH8Dlt';
+import { provideHttpClient } from '@angular/common/http';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [AppComponent,],
@@ -17,12 +20,13 @@ import { RegisterComponent } from './components/register/register.component';
     AppRoutingModule,
     ReactiveFormsModule,
     FormsModule,
+    CommonModule,
 
     RegisterComponent,
     LoaderPage
 
   ],
-  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
+  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy },provideHttpClient()],
   bootstrap: [AppComponent],
 })
 

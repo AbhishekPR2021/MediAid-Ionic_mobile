@@ -1,0 +1,34 @@
+{
+    "subPhases":[
+        {
+            "id":"header",
+            "label":"Diet Details",
+            "type":"p"
+        }, 
+        {
+            "id":"subheader",
+            "label":"Please fill out all details",
+            "type":"p"
+        },
+        {
+            "id":"courseName",
+            "label":"Course Name",
+            "type":"text"
+        },
+        {
+            "id":"duration",
+            "label":"Duration",
+            "type":"time"
+        },
+        {
+            "id":"videos",
+            "label":"Diet Videos",
+            "type":"videos"
+        },
+        {
+            "id":"save",
+            "label":"Save",
+            "type":"button"
+        }
+    ]
+    }

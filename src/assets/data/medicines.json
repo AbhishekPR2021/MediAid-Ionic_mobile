@@ -1,0 +1,34 @@
+{
+    "subPhases":[
+        {
+            "id":"header",
+            "label":"Medicine Details",
+            "type":"p"
+        }, 
+        {
+            "id":"subheader",
+            "label":"Please fill out all details",
+            "type":"p"
+        },
+        {
+            "id":"name",
+            "label":"Medicine Name",
+            "type":"text"
+        },
+        {
+            "id":"time",
+            "label":"Time to Take",
+            "type":"time"
+        },
+        {
+            "id":"completion",
+            "label":"Completion Status",
+            "type":"boolean"
+        },
+        {
+            "id":"save",
+            "label":"Save",
+            "type":"button"
+        }
+    ]
+    }

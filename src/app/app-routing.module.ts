@@ -1,35 +1,39 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { RegisterComponent } from './components/register/register.component';
+import { DoctorsComponent } from './components/doctors/doctors.component';
+import { DietsComponent } from './components/diets/diets.component';
+import { EmergencyComponent } from './components/emergency/emergency.component';
+import { MedicinesComponent } from './components/medicines/medicines.component';
+
 
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'loader',
-    pathMatch: 'full'
+    loadChildren: () => import('./tabs/tabs.module').then(m => m.TabsPageModule)
   },
   {
-    path: 'folder/:id',
-    loadChildren: () => import('./folder/folder.module').then( m => m.FolderPageModule)
+    path:'',
+    loadChildren:()=> import('./pages/home/home-routing.module').then(m=>m.HomePageRoutingModule)
   },
   {
-    path: 'loader',
-    loadChildren: () => import('./pages/loader/loader.module').then( m => m.LoaderPageModule)
+    path: 'emergency-page',
+    loadChildren: () => import('./pages/emergency-page/emergency-page.module').then( m => m.EmergencyPagePageModule)
   },
   {
-    path: 'login',
-    loadChildren: () => import('./pages/login/login.module').then( m => m.LoginPageModule)
+    path: 'medicine-page',
+    loadChildren: () => import('./pages/medicine-page/medicine-page.module').then( m => m.MedicinePagePageModule)
   },
   {
-    path: 'register',
-    component:RegisterComponent
-  },{
-    path: '**',
-    redirectTo: 'loader',
-    pathMatch: 'full'
-  }
+    path: 'diet-page',
+    loadChildren: () => import('./pages/diet-page/diet-page.module').then( m => m.DietPagePageModule)
+  },
+  {
+    path: 'profile-page',
+    loadChildren: () => import('./pages/profile-page/profile-page.module').then( m => m.ProfilePagePageModule)
+  },
+  
 ];
-
 @NgModule({
   imports: [
     RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules })
