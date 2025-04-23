@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, CUSTOM_ELEMENTS_SCHEMA, OnInit } from '@angular/core';
-import { IonicModule } from '@ionic/angular';
+import { Router } from '@angular/router';
+import { IonicModule, NavController } from '@ionic/angular';
 import { HttpService } from 'src/app/services/http.service';
 import { MappingService } from 'src/app/services/mapping.service';
 
@@ -13,7 +14,7 @@ import { MappingService } from 'src/app/services/mapping.service';
 })
 export class DietsComponent  implements OnInit {
   dietModel:any={}
-  constructor(private http:HttpService,private mapping:MappingService) { }
+  constructor(private http:HttpService,private mapping:MappingService,private router:Router,private navCtrl:NavController) { }
 
   ngOnInit() {
     this.dietModel = this.http.getModel(this.mapping.getDietModelUrl).subscribe((res)=>{
@@ -23,5 +24,8 @@ export class DietsComponent  implements OnInit {
 
     })
 
+  }
+  goBack(){
+    this.navCtrl.back()
   }
 }

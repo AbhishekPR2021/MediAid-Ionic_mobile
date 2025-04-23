@@ -15,12 +15,6 @@
             "label":"Name of Doctor",
             "type":"text"
         },
-
-        {
-            "id":"name",
-            "label":"Name of Doctor",
-            "type":"text"
-        },
         {
             "id":"address",
             "label":"Address",
@@ -39,7 +33,7 @@
         {
             "id":"save",
             "label":"Save",
-            "type":"button"
+            "type":"submit"
         }
         
     ]

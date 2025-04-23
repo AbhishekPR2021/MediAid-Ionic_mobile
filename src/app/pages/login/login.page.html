@@ -5,20 +5,18 @@
         <span>MEDIAID</span>
 
       </div>
-
-      <ion-item>
-        <ion-input placeholder="Email" type="email" clearInput autofocus required></ion-input>
-      </ion-item>
-  
-      <ion-item>
-        <ion-input placeholder="Password" type="password" clearInput required></ion-input>
-      </ion-item>
-  
-      <ion-button expand="block" class="login-button">Login</ion-button>  
-      <div class="register" (click)="register()">
-        <span> Register Here</span>
-
-      </div>
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <ion-item>
+          <ion-input placeholder="Username" type="email" formControlName="userName" clearInput autofocus required></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-input placeholder="Password" type="password" formControlName="password" clearInput required></ion-input>
+        </ion-item>
+        <ion-button expand="block" class="login-button" type="submit">Login</ion-button>
+        <div class="register" (click)="register()">
+          <span> Register Here</span>
+        </div>
+      </form>
     </ion-card>
   </ion-list>
 

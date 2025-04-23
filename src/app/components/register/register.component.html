@@ -1,60 +1,43 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>Registration</ion-title>
-  </ion-toolbar>
-</ion-header>
 <ion-content class="ion-padding">
+  <ion-icon name="arrow-back" size="large" (click)="goBack()"></ion-icon>
+
+  <div class="registration-header">
+    <h1>Registration</h1>
+    <p>Please fill in the details to create your account</p>
+  </div>
+
   <div class="form-container">
     <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
-      <ion-list>
-        <ion-item>
-          <ion-label>Name</ion-label>
-          <input type="text" formControlName="name">
+      <ion-list lines="none">
+        <ion-item class="input-item">
+          <ion-label position="floating">Name</ion-label>
+          <ion-input type="text" formControlName="name"></ion-input>
+        </ion-item>
 
+        <ion-item class="input-item">
+          <ion-label position="floating">Email</ion-label>
+          <ion-input type="email" formControlName="email"></ion-input>
+        </ion-item>
+
+        <ion-item class="input-item">
+          <ion-label position="floating">Age</ion-label>
+          <ion-input type="number" formControlName="age"></ion-input>
+        </ion-item>
+
+        <ion-item class="input-item">
+          <ion-label position="floating">Password</ion-label>
+          <ion-input type="password" formControlName="password"></ion-input>
+        </ion-item>
+
+        <ion-item class="input-item">
+          <ion-label position="floating">Confirm Password</ion-label>
+          <ion-input type="password" formControlName="cpassword"></ion-input>
         </ion-item>
       </ion-list>
 
-      <ion-list>
-        <ion-item>
-          <ion-label>Email</ion-label>
-          <input type="email" formControlName="email">
-
-        </ion-item>
-      </ion-list>
-
-      <ion-list>
-        <ion-item>
-          <ion-label>Age</ion-label>
-          <input type="number" formControlName="age">
-
-        </ion-item>
-      </ion-list>
-
-      <ion-list>
-        <ion-item>
-          <ion-label>Password</ion-label>
-          <input type="password" formControlName="password">
-
-        </ion-item>
-      </ion-list>
-
-      <ion-list>
-        <ion-item>
-          <ion-label>Confirm Password</ion-label>
-          <input type="password" formControlName="cpassword">
-
-        </ion-item>
-      </ion-list>
-
-      <ion-list>
-        <ion-item>
-          <div class="button-container">
-            <ion-button expand="block" type="submit">Register</ion-button>
-          </div>
-        </ion-item>
-      </ion-list>
+      <ion-button expand="block" type="submit" class="register-button">
+        Register
+      </ion-button>
     </form>
-
   </div>
-  <!-- <ion-toast [isOpen]="warning" mode="ios" color="isSuccess ? 'success' : 'danger'" message="{{wmessage}}" [duration]="5000" (didDismiss)="warningClose()"></ion-toast> -->
 </ion-content>

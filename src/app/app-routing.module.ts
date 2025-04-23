@@ -15,7 +15,33 @@ const routes: Routes = [
   {
     path:'addDoctor',
     loadComponent:()=>import('./components/doctors/doctors.component').then(m=>m.DoctorsComponent)
+  },
+  {
+    path:'addDiet',
+    loadComponent:()=>import('./components/diets/diets.component').then(m=>m.DietsComponent)
+  },
+  {
+    path:'addMedicine',
+    loadComponent:()=>import('./components/medicines/medicines.component').then(m=>m.MedicinesComponent)
+  },
+  {
+    path:'register',
+    loadComponent:()=>import('./components/register/register.component').then(m=>m.RegisterComponent)
+  },
+  {
+    path:'emergency',
+    loadComponent:()=>import('./components/emergency/emergency.component').then(m=>m.EmergencyComponent)
+  },
+  {
+    path:'login',
+    loadChildren:()=>import('./pages/login/login-routing.module').then(m=>m.LoginPageRoutingModule)
+  },
+  {
+    path:'loader',
+    loadChildren:()=>import('./pages/loader/loader-routing.module').then(m=>m.LoaderPageRoutingModule)
   }
+
+
   
 ];
 @NgModule({

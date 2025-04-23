@@ -1,7 +1,10 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Medicines</ion-title>
+  </ion-toolbar>
+</ion-header>
 <ion-content class="ion-padding">
   <div class="card-grid">
-
-    <h2 class="form-title">Doctors</h2>
 
     <!-- iterating view -->
     <ion-card class="interactive-card gradient-blue">
@@ -44,6 +47,12 @@
   </div>
 
   <!-- fab icons -->
+  <ion-fab *ngIf="deleteActions || editActions" slot="fixed" vertical="bottom" horizontal="start">
+    <ion-fab-button (click)="clear()">
+      <ion-icon name="close"></ion-icon>
+    </ion-fab-button>
+</ion-fab>
+
   <ion-fab slot="fixed" vertical="bottom" horizontal="end">
     <ion-fab-button>
       <ion-icon name="chevron-up-circle"></ion-icon>

@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-toolbar color="primary">
+  <ion-toolbar>
     <ion-title>Emergency Details</ion-title>
   </ion-toolbar>
 </ion-header>
@@ -46,7 +46,7 @@
   </ion-card>
 
   <div class="btn-group">
-    <ion-button color="tertiary" expand="block">Update Details</ion-button>
+    <ion-button color="tertiary" expand="block" (click)="updateDetails()">Update Details</ion-button>
     <ion-button color="medium" expand="block">Update Emergency Contact</ion-button>
     <ion-button color="danger" expand="block" strong>Trigger Emergency Alert</ion-button>
   </div>

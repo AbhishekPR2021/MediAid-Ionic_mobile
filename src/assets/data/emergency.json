@@ -19,6 +19,10 @@
             "id":"phoneNumber",
             "label":"Phone Number",
             "type":"number"
+        },{
+            "id":"altPhoneNumber",
+            "label":"Alternate Phone Number",
+            "type":"number"
         },
         {
             "id":"age",
@@ -43,7 +47,7 @@
         {
             "id":"save",
             "label":"Save",
-            "type":"button"
+            "type":"submit"
         }
     ]
     }

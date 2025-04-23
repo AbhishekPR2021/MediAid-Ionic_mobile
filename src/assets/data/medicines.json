@@ -28,7 +28,7 @@
         {
             "id":"save",
             "label":"Save",
-            "type":"button"
+            "type":"submit"
         }
     ]
     }
