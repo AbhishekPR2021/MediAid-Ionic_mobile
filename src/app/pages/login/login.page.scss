@@ -1,6 +1,9 @@
 .login-container{
     justify-content: center;
     align-items: center;
+    --background: #e3f2fd !important; // Light blue background
+    background-color: #e3f2fd !important; // Fallback for older Ionic versions
+    padding: 20px;
 
 }
 .login-list {
@@ -67,6 +70,7 @@ span{
     border: 1px solid #ccc;
     border-radius: 8px;
     transition: border 0.3s ease;
+    color: #6b7c93;
   }
   
   ion-input:focus-within {
@@ -84,4 +88,14 @@ span{
       height: 50px;
     }
   }
-  
+  ion-list{
+    background: linear-gradient(135deg, #a1c4fd, #c2e9fb);;
+  }
+  ion-card{
+    background: linear-gradient(45deg, #a8edea, #fed6e3)
+
+  }
+  ion-item{
+    --ion-item-background:transparent
+
+  }

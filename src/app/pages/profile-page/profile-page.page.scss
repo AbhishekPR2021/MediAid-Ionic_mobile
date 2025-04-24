@@ -30,3 +30,18 @@
   ion-toolbar{
     --background:linear-gradient(135deg, #a1c4fd, #c2e9fb);;
   }
+  ion-card, ion-list{
+    background:#c9f3ff
+  }
+  ion-item{
+    --ion-item-background:#c9f3ff
+  }
+  h2{
+    color: #666;
+  }
+  ion-avatar{
+    display: flex;
+    justify-content: center;
+    align-items: center
+    ;
+  }

@@ -17,7 +17,7 @@
 .form-container {
   max-width: 400px;
   margin: 0 auto;
-  background: #fff;
+  background: #ebf8fd;
   padding: 24px;
   border-radius: 16px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
@@ -27,7 +27,7 @@
   margin-bottom: 16px;
   --highlight-color-focused: #4e8cff;
   --border-radius: 12px;
-  --background: #f4f7fa;
+  --background: #acd0fc;
   padding: 8px 12px;
   border-radius: 12px;
 }
@@ -36,4 +36,7 @@
   margin-top: 24px;
   --border-radius: 12px;
   font-weight: 600;
+}
+ion-list{
+  background: #ebf8fd;
 }
