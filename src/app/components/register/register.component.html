@@ -1,9 +1,9 @@
 <ion-content class="ion-padding">
-  <ion-icon name="arrow-back" size="large" (click)="goBack()"></ion-icon>
+  <ion-icon name="arrow-back" size="large" (click)="goBack()" class="arrow-back"></ion-icon>
 
   <div class="registration-header">
     <h1>Registration</h1>
-    <p>Please fill in the details to create your account</p>
+    <p>Please fill the details to create your account</p>
   </div>
 
   <div class="form-container">
@@ -22,6 +22,16 @@
         <ion-item class="input-item">
           <ion-label position="floating">Age</ion-label>
           <ion-input type="number" formControlName="age"></ion-input>
+        </ion-item>
+
+        <ion-item class="input-item">
+          <ion-label position="floating">Blood Group</ion-label>
+          <ion-input type="text" formControlName="bloodGroup"></ion-input>
+        </ion-item>
+
+        <ion-item class="input-item">
+          <ion-label position="floating">Phone number</ion-label>
+          <ion-input type="number" formControlName="phoneNumber"></ion-input>
         </ion-item>
 
         <ion-item class="input-item">

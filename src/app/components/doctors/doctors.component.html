@@ -1,5 +1,5 @@
 <ion-content [fullscreen]="true" class="ion-padding custom-bg">
-  <ion-icon name="arrow-back"size="large" (click)="goBack()"></ion-icon>
+  <ion-icon name="arrow-back"size="large" (click)="goBack()" class="arrow-back"></ion-icon>
   <div class="form-container">
     <form [formGroup]="doctorForm" (ngSubmit)="onSubmit()">
     <div *ngFor="let item of doctorsModel.subPhases">
