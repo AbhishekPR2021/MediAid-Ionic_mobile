@@ -37,5 +37,12 @@
 @import "@ionic/angular/css/palettes/dark.system.css";
 ion-content {
     --background: linear-gradient(135deg, #a1c4fd, #c2e9fb);    padding: 20px;
-  }
+  };
   
+ion-toolbar{
+  padding-top:2rem !important;
+}
+ion-tab-bar{
+  --ion-tab-bar-background: #fff !important;
+  border:none;
+}
