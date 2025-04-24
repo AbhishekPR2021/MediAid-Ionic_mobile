@@ -9,7 +9,7 @@ import { MedicinesComponent } from './components/medicines/medicines.component';
 
 const routes: Routes = [
   {
-    path: '',
+    path: 'tabs',
     loadChildren: () => import('./tabs/tabs.module').then(m => m.TabsPageModule)
   },
   {
@@ -37,8 +37,13 @@ const routes: Routes = [
     loadChildren:()=>import('./pages/login/login-routing.module').then(m=>m.LoginPageRoutingModule)
   },
   {
-    path:'loader',
+    path:'',
     loadChildren:()=>import('./pages/loader/loader-routing.module').then(m=>m.LoaderPageRoutingModule)
+  },
+  {
+    path:'**',
+    redirectTo:'',
+    pathMatch:'full'
   }
 
 

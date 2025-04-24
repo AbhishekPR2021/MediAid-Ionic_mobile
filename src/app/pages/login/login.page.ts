@@ -3,6 +3,7 @@ import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { Router } from '@angular/router';
 import { IonicModule, ToastController } from '@ionic/angular';
 import { Messages } from 'src/app/models/messages';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -13,25 +14,37 @@ import { Messages } from 'src/app/models/messages';
 
 })
 export class LoginPage implements OnInit {
-
+  isAuthenticated:boolean = false;
   isSuccess:boolean=false;
   loginForm=new FormGroup({
-    userName:new FormControl('',[Validators.required]),
+    email:new FormControl('',[Validators.required,Validators.email]),
     password:new FormControl('',[Validators.required,Validators.minLength(8)])
 
   })
 
-  constructor(private router:Router,private message:Messages,private toastController:ToastController) { }
+  constructor(private router:Router,private message:Messages,private toastController:ToastController,private authService:AuthService) { }
 
   ngOnInit() {
+
   }
   register(){
     this.router.navigate(['register'])
   }
   onSubmit(){
     if(this.loginForm.valid){
+      debugger
       this.isSuccess=true
       //check authentication
+      this.authService.getAuth(this.loginForm.value).subscribe((res)=>{
+        if(res){
+          this.authService.authorized = this.isAuthenticated = true
+          this.router.navigate(['/tabs'])
+        }else{
+          this.isSuccess=false;
+          this.setToast(this.message.authenticationFailed)
+        }
+      })
+     
     }else{
       this.isSuccess=false
       this.setToast(this.message.missingFields)

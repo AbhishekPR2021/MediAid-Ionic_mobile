@@ -7,5 +7,6 @@ import { Injectable } from "@angular/core";
     passwordMissmatch="The password not matching"
     missingFields="One more fields are incorrect, Please enter details in all fields"
     successMessage="Data entered successfully"
+    authenticationFailed="Authentication Failed please try again"
 
 }

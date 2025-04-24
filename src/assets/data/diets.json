@@ -21,6 +21,11 @@
             "type":"time"
         },
         {
+            "id":"description",
+            "label":"Description",
+            "type":"text"
+        },
+        {
             "id":"videos",
             "label":"Diet Videos",
             "type":"videos"

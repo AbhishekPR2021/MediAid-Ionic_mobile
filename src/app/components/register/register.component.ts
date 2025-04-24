@@ -4,6 +4,7 @@ import { FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule, 
 import { Router } from '@angular/router';
 import { AlertController, IonicModule, NavController, ToastController } from '@ionic/angular';
 import { Messages } from 'src/app/models/messages';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-register',
@@ -17,6 +18,8 @@ export class RegisterComponent implements OnInit {
     name: new FormControl('', [Validators.required]),
     email: new FormControl('', [Validators.email],),
     age: new FormControl('', [Validators.required]),
+    bloodGroup: new FormControl('', [Validators.required]),
+    phoneNumber: new FormControl('', [Validators.required,Validators.minLength(10)]),
     password: new FormControl('', [Validators.minLength(6)]),
     cpassword: new FormControl('', [Validators.required])
   })
@@ -24,7 +27,7 @@ export class RegisterComponent implements OnInit {
   wmessage!: string
   isSuccess: boolean = false;
   constructor(private fb: FormBuilder, private ac: AlertController, private messages: Messages,
-    private toastController: ToastController, private router: Router, private navCtrl: NavController
+    private toastController: ToastController, private router: Router, private navCtrl: NavController, private authService:AuthService
   ) {
   }
 
@@ -37,15 +40,21 @@ export class RegisterComponent implements OnInit {
         this.warning = !this.warning
         this.setToast(this.messages.passwordMissmatch);
       } else {
-        this.isSuccess = true
-        this.setToast(this.messages.successMessage);
+        this.authService.addUser(this.registrationForm.value).subscribe((res)=>{
+          if(res=='success'){
+            this.isSuccess = true
+            this.setToast(this.messages.successMessage);    
+            console.log('form submitted CONFIRM', this.registrationForm.value);
+            setTimeout(()=>{
+              this.router.navigate(['/login'])
+            },2000)
+          }
+        })
       }
-      console.log('form submitted', this.registrationForm.value)
     } else {
       this.warning = !this.warning
       this.wmessage = this.messages.missingFields
       this.setToast(this.messages.missingFields);
-      console.log('form is invalid')
     }
   }
   warningClose() {

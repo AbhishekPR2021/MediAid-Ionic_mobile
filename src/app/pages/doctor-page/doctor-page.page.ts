@@ -11,11 +11,23 @@ import { Router } from '@angular/router';
 })
 export class DoctorPagePage implements OnInit {
 
+  isAuthenticated:boolean = false;
   deleteActions:boolean=false
   editActions:boolean=false
   constructor(private router:Router) { }
 
   ngOnInit() {
+
+    this.isAuth();
+
+  }
+  initLoader(){
+    this.router.navigate(['/loader'])
+  }
+  isAuth(){
+    // if(!this.isAuthenticated){
+    //   this.router.navigate(['login'])
+    // }
   }
   addDoctor(){
     console.log('add doc')
