@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
-import { Component, CUSTOM_ELEMENTS_SCHEMA, OnInit } from '@angular/core';
+import { Component, CUSTOM_ELEMENTS_SCHEMA, NgZone, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { DoctorService } from 'src/app/services/doctor.service';
 import { SharedDataService } from 'src/app/services/shared-data.service';
 
 @Component({
@@ -15,7 +16,7 @@ export class DoctorPagePage implements OnInit {
   isAuthenticated:boolean = false;
   deleteActions:boolean=false
   editActions:boolean=false
-  constructor(private router:Router, private sharedJson:SharedDataService) { }
+  constructor(private router:Router, private sharedJson:SharedDataService,private doctoservice:DoctorService, private ngZone:NgZone) { }
   sharedDoctor:any
   ngOnInit() {
     this.isAuth();
@@ -35,7 +36,6 @@ export class DoctorPagePage implements OnInit {
     // }
   }
   addDoctor(){
-    console.log('add doc')
     this.router.navigate(['/addDoctor'])
   }
   deleteAction(){
@@ -46,5 +46,23 @@ export class DoctorPagePage implements OnInit {
   }
   editAction(){
     this.editActions=true
+  }
+  deleteDoctor(id:number){
+    this.doctoservice.deleteDoctor(id).subscribe((res)=>{
+      console.log('res',res,id,this.sharedJson.doctors)
+      if(res){
+        for(let k of this.sharedJson.doctors){
+          if(k.DOCT_ID == id){
+            let indx = this.sharedJson.doctors.findIndex((m: { DOCT_ID: number; })=>m.DOCT_ID=== id);
+            if(indx !==-1){
+              this.ngZone.run(()=>{
+                this.sharedJson.doctors.splice(indx,1)
+            })
+          }
+        }
+      }
+
+      }
+    })
   }
 }

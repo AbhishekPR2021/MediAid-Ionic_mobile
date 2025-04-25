@@ -2,7 +2,8 @@
   <ion-icon name="arrow-back" size="large" (click)="goBack()" class="arrow-back"></ion-icon>
 
   <div class="registration-header">
-    <h1>Registration</h1>
+    <h1 *ngIf="!isEdit" else #edit>Registration</h1>
+    <h1 #edit>Edit Profile</h1>
     <p>Please fill the details to create your account</p>
   </div>
 

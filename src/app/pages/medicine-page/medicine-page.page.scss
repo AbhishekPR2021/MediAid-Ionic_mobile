@@ -48,12 +48,12 @@
   .badge{
       display: flex;
       flex-direction: row-reverse;
-      margin-bottom: -3.5rem;
       margin-right: 0.5rem;
   }
   .badge-icon{
     --color:#fff;
     --border-radius: 13px;
+    --background:#11998e;
 }
   ion-toolbar{
     --background:linear-gradient(135deg, #a1c4fd, #c2e9fb);;

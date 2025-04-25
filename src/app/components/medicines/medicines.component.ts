@@ -7,6 +7,7 @@ import { Messages } from 'src/app/models/messages';
 import { HttpService } from 'src/app/services/http.service';
 import { MappingService } from 'src/app/services/mapping.service';
 import { MedicineService } from 'src/app/services/medicine.service';
+import { SharedDataService } from 'src/app/services/shared-data.service';
 
 @Component({
   selector: 'app-medicines',
@@ -24,7 +25,7 @@ export class MedicinesComponent implements OnInit {
     time: new FormControl('', [Validators.required]),
     completion: new FormControl('', [Validators.required]),
   })
-  constructor(private http: HttpService, private mapping: MappingService, private router: Router,
+  constructor(private http: HttpService, private mapping: MappingService, private router: Router, private sharedJson: SharedDataService,
     private toastController: ToastController, private message: Messages, private navCtrl:NavController, private mediService:MedicineService
   ) { }
 
@@ -42,6 +43,13 @@ export class MedicinesComponent implements OnInit {
       console.log(this.medicineForm.value)
       this.mediService.addMedicine(this.medicineForm.value).subscribe((res)=>{
         if(res){
+          let model = {MEDICINE_ID:'',MEDICINE_NAME:'',TIME_TO_TAKE:'',COMPLETION:''};
+          model.MEDICINE_ID = res;
+          model.MEDICINE_NAME = this.medicineForm.value.name!;
+          model.TIME_TO_TAKE=this.medicineForm.value.time!;
+          model.COMPLETION=this.medicineForm.value.completion!;
+
+          this.sharedJson.medicine.push(model);
           this.setToast(this.message.successMessage);
           setTimeout(() => {
             this.goBack();
@@ -68,4 +76,5 @@ export class MedicinesComponent implements OnInit {
     await toast.present();
 
   }
+  
 }

@@ -7,23 +7,32 @@
   <div class="card-grid">
 
     <!-- iterating view -->
-    <ion-card class="interactive-card gradient-green">
-      <div *ngIf="deleteActions || editActions" class="badge">
-        <ion-button *ngIf="deleteActions" class="badge-icon">
-          <ion-icon name="trash"></ion-icon>
-        </ion-button>  
-        <ion-button *ngIf="editActions" class="badge-icon">
-          <ion-icon name="pencil"></ion-icon>
-        </ion-button>  
-      </div>
-      <ion-card-header>
-        <ion-card-title>Dr. Emily Stone</ion-card-title>
-        <ion-card-subtitle>Cardiologist</ion-card-subtitle>
-      </ion-card-header>
-      <ion-card-content>
-        Specialized in heart health and internal medicine.
-      </ion-card-content>
-    </ion-card>
+     <ion-title *ngIf="!sharedMedicine">Please add your Medicines</ion-title>
+     <div *ngFor="let med of sharedMedicine">
+      <ion-card class="interactive-card gradient-green" >
+        
+        <ion-card-header>
+          <div *ngIf="deleteActions" class="badge">
+            <ion-button class="badge-icon"  (click)="deleteMedicine(med.MEDICINE_ID)">
+              <ion-icon name="trash"></ion-icon>
+            </ion-button>  
+            <!-- <ion-button *ngIf="editActions" class="badge-icon" (click)="editMedicine(med.MEDICINE_ID)">
+              <ion-icon name="pencil"></ion-icon>
+            </ion-button>   -->
+          </div>
+          <ion-card-title>{{med.MEDICINE_NAME}}</ion-card-title>
+          <ion-card-subtitle *ngIf="med.COMPLETION">Great You have took!</ion-card-subtitle>
+          <ion-card-subtitle *ngIf="!med.COMPLETION">Medicine Not Taken</ion-card-subtitle>
+        </ion-card-header>
+        <ion-card-content>
+          Next strip at : {{med.TIME_TO_TAKE}}
+          <!-- <div>
+            <ion-card-subtitle *ngIf="!med.COMPLETION">Mark Completion</ion-card-subtitle>
+            <ion-toggle></ion-toggle>  
+          </div> -->
+        </ion-card-content>
+      </ion-card>  
+     </div>
 
     <!-- <ion-card class="interactive-card gradient-purple">
       <ion-card-header>
@@ -58,9 +67,9 @@
       <ion-icon name="chevron-up-circle"></ion-icon>
     </ion-fab-button>
     <ion-fab-list side="top">
-      <ion-fab-button (click)="editAction()">
+      <!-- <ion-fab-button (click)="editAction()">
         <ion-icon name="pencil"></ion-icon>
-      </ion-fab-button>
+      </ion-fab-button> -->
       <ion-fab-button (click)="deleteAction()">
         <ion-icon name="trash"></ion-icon>
       </ion-fab-button>

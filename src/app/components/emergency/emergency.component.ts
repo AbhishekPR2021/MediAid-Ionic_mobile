@@ -24,6 +24,7 @@ export class EmergencyComponent  implements OnInit {
     altPhoneNumber:new FormControl('',[Validators.required,Validators.minLength(10)]),
     age:new FormControl('',[Validators.required]),
     address:new FormControl('',[Validators.required]),
+    hospitalContact:new FormControl('',[Validators.required]),
     location:new FormControl('',[Validators.required]),
     report:new FormControl('',[Validators.required]),
 

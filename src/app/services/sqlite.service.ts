@@ -118,11 +118,11 @@ export class SqliteService {
     })
   
   }
-  async deleteMedicine(id:number):Promise<boolean> {
+  async deleteMedicine(id:number):Promise<any> {
     return new Promise(async(resolve,reject)=>{
     try{
       let insertQry = 'DELETE FROM MEDICINES WHERE MEDICINE_ID = ?';
-      await this.db!.run(insertQry, [id])  ;
+      let result = await this.db!.run(insertQry, [id])  ;
       resolve(true);
     }catch(err){
       console.log('delete medicines error',err);
@@ -209,10 +209,10 @@ export class SqliteService {
   async deleteDiet() { }
 
   // emergency operations 
-  async addEmergency(name:string, phoneNumber:string, altPhoneNumber:string, age:string, address:string, location:string, report:string):Promise<any> { 
+  async addEmergency(name:string, phoneNumber:string, altPhoneNumber:string, age:string, address:string,hospitalContact:string, location:string, report:string):Promise<any> { 
     return new Promise(async(resolve, reject)=>{
       try {
-        let insertQry = 'INSERT OR REPLACE INTO EMERGENCY(NAME,PHONE_NUMBER,ALTERNATE_PHONE_NUMBER,AGE, ADDRESS, LOCATION, REPORT) VALUES (?,?,?,?,?,?,?)';
+        let insertQry = 'INSERT OR REPLACE INTO EMERGENCY(NAME,PHONE_NUMBER,ALTERNATE_PHONE_NUMBER,AGE, ADDRESS, HOSPITAL_CONTACT, LOCATION, REPORT) VALUES (?,?,?,?,?,?,?,?)';
         let result = await this.db!.run(insertQry, [name, phoneNumber, altPhoneNumber, age, address, location, report]);
         resolve(result.changes?.lastId);
       } catch (err) {
@@ -223,11 +223,11 @@ export class SqliteService {
 
 
   }
-  async editEmergency(name: string, phoneNumber: string, altPhoneNumber: string, age:number, address: string, location: string, report: string, id:number):Promise<any> { 
+  async editEmergency(name: string, phoneNumber: string, altPhoneNumber: string, age:number, address: string, hospitalContact:string,  location: string, report: string, id:number):Promise<any> { 
     return new Promise(async(resolve, reject)=>{
       try{
-        let updateQry = 'UPDATE EMERGENCY SET NAME = ?,PHONE_NUMBER = ?, ALTERNATE_PHONE_NUMBER = ?, AGE = ?, ADDRESS = ?, LOCATION = ?, REPORT = ? WHERE ID = ?';
-        await this.db!.run(updateQry, [name, phoneNumber, altPhoneNumber, age, address, location, report, id]);
+        let updateQry = 'UPDATE EMERGENCY SET NAME = ?,PHONE_NUMBER = ?, ALTERNATE_PHONE_NUMBER = ?, AGE = ?, ADDRESS = ?, HOSPITAL_CONTACT = ?, LOCATION = ?, REPORT = ? WHERE ID = ?';
+        await this.db!.run(updateQry, [name, phoneNumber, altPhoneNumber, age, address, hospitalContact, location, report, id]);
         resolve(true);
       }catch(err){
         console.log('edit emergency err',err);

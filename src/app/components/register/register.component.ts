@@ -1,10 +1,11 @@
 import { CommonModule } from '@angular/common';
 import { Component, CUSTOM_ELEMENTS_SCHEMA, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AlertController, IonicModule, NavController, ToastController } from '@ionic/angular';
 import { Messages } from 'src/app/models/messages';
 import { AuthService } from 'src/app/services/auth.service';
+import { SharedDataService } from 'src/app/services/shared-data.service';
 
 @Component({
   selector: 'app-register',
@@ -26,12 +27,24 @@ export class RegisterComponent implements OnInit {
   warning: boolean = false;
   wmessage!: string
   isSuccess: boolean = false;
+  isEdit:boolean= false;
+  userValueModel:any;
+
   constructor(private fb: FormBuilder, private ac: AlertController, private messages: Messages,
-    private toastController: ToastController, private router: Router, private navCtrl: NavController, private authService:AuthService
+    private toastController: ToastController, private router: Router, private navCtrl: NavController, private authService:AuthService, private activatedRoutes:ActivatedRoute, private sharedJSon:SharedDataService
   ) {
+    this.activatedRoutes.queryParams.subscribe(()=>{
+      if(this.router?.getCurrentNavigation()?.extras.state){
+        let val = this.router.getCurrentNavigation()!.extras.state;
+        this.isEdit = val!['data']=='edit' ? true:false
+      }
+    })
   }
 
   ngOnInit() {
+    if(this.isEdit){
+      this.userValueModel= this.sharedJSon.user[0];
+    }
   }
   // Handle form submission
   async onSubmit() {

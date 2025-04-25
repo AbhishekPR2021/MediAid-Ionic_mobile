@@ -33,6 +33,10 @@
             "id":"address",
             "label":"Address",
             "type":"text"
+        },{
+            "id":"hospitalContact",
+            "label":"Near by Hospital Contact",
+            "type":"text"
         },
         {
             "id":"location",

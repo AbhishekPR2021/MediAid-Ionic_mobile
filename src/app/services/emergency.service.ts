@@ -10,7 +10,7 @@ export class EmergencyService {
   constructor(private sqlService:SqliteService) { }
   setPrimaryContact(data:any):Observable<any>{
     return new Observable((observer)=>{
-      this.sqlService.addEmergency(data.name, data.phoneNumber, data.altPhoneNumber, data.age, data.address, data.location, data.report).then((res)=>{
+      this.sqlService.addEmergency(data.name, data.phoneNumber, data.altPhoneNumber, data.age, data.address, data.hospitalContact, data.location, data.report).then((res)=>{
         observer.next(res);
         observer.complete();
       })

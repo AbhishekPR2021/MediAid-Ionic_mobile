@@ -11,12 +11,12 @@
      <div *ngFor="let doc of sharedDoctor">
       <ion-card class="interactive-card gradient-blue">
         <div *ngIf="deleteActions || editActions" class="badge">
-          <ion-button *ngIf="deleteActions" class="badge-icon">
+          <ion-button *ngIf="deleteActions" class="badge-icon" (click)="deleteDoctor(doc.DOCT_ID)">
             <ion-icon name="trash"></ion-icon>
           </ion-button>  
-          <ion-button *ngIf="editActions" class="badge-icon">
+          <!-- <ion-button *ngIf="editActions" class="badge-icon" (click)="editDoctor(doc.DOCT_ID)">
             <ion-icon name="pencil"></ion-icon>
-          </ion-button>  
+          </ion-button>   -->
         </div>
         <ion-card-header>
           <ion-card-title>Dr. {{doc.NAME}}</ion-card-title>
@@ -41,9 +41,6 @@
       <ion-icon name="chevron-up-circle"></ion-icon>
     </ion-fab-button>
     <ion-fab-list side="top">
-      <ion-fab-button (click)="editAction()">
-        <ion-icon name="pencil"></ion-icon>
-      </ion-fab-button>
       <ion-fab-button (click)="deleteAction()">
         <ion-icon name="trash"></ion-icon>
       </ion-fab-button>

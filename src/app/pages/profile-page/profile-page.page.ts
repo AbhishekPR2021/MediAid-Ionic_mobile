@@ -15,12 +15,21 @@ import { SharedDataService } from 'src/app/services/shared-data.service';
 })
 export class ProfilePagePage implements OnInit {
   isSuccess = false;
+  sharedUser:any;
+  shEmerg:any;
   constructor(private router:Router,private sharedJson:SharedDataService, private authService: AuthService, private toastController:ToastController, private message:Messages) { }
 
   ngOnInit() {
+    this.sharedUser = this.sharedJson.user;
+    this.shEmerg = this.sharedJson.emergency[0];
   }
   updateProfile(){
-    this.router.navigate(['/register'])
+    const navigationExtras={
+      state:{
+        data:'edit'
+      }
+    }
+    this.router.navigate(['/register'],navigationExtras)
   }
   logOut(){
     console.log('this.sharedJson.user.email',this.sharedJson.user.email)

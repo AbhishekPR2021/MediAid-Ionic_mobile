@@ -10,7 +10,7 @@ export class MedicineService {
   constructor(private sqlService:SqliteService) { }
   addMedicine(data:any):Observable<any>{
     return new Observable((observer)=>{
-      this.sqlService.addMedicine(data.name, data.timeInterval, data.completion).then((res)=>{
+      this.sqlService.addMedicine(data.name, data.time, data.completion).then((res)=>{
         observer.next(res);
         observer.complete();
       })
