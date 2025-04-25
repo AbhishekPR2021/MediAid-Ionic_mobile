@@ -1,7 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { Component, CUSTOM_ELEMENTS_SCHEMA, OnInit } from '@angular/core';
 import { NativeAudio } from '@capacitor-community/native-audio';
-import { IonicModule, NavController } from '@ionic/angular';
+import { IonicModule, NavController, ToastController } from '@ionic/angular';
+import { Messages } from 'src/app/models/messages';
 
 @Component({
   selector: 'app-shake',
@@ -13,8 +14,9 @@ import { IonicModule, NavController } from '@ionic/angular';
 export class ShakeComponent  implements OnInit {
   countDownValue = 5;
   emergencyActive = false;
+  stop:boolean=false;
 
-  constructor(private navCtrl: NavController) { }
+  constructor(private navCtrl: NavController, private toastController:ToastController, private message:Messages) { }
 
   ngOnInit() {
     NativeAudio.preload({
@@ -34,6 +36,10 @@ export class ShakeComponent  implements OnInit {
     const countdownTimer = setInterval(() => {
       if(this.countDownValue>0){
         this.countDownValue--;
+        if(this.stop){
+          this.countDownValue = 5;
+          clearInterval(countdownTimer);
+        }
       }else{
         this.initiateProcess();
         clearInterval(countdownTimer);
@@ -41,6 +47,8 @@ export class ShakeComponent  implements OnInit {
     }, 1000);
   }
   stopCountdown(){
+    this.stop = true;
+    this.setToast(this.message.emergencyStopped);
     NativeAudio.stop({
       assetId:'security_alarm'
     })
@@ -56,5 +64,16 @@ export class ShakeComponent  implements OnInit {
       console.log('audio err',err)
     }
   }
+  async setToast(msg: string) {
+    const toast = await this.toastController.create({
+      message: msg,
+      duration: 3000,
+      position: 'bottom',
+      mode: 'ios',
+      color: 'success'
+    });
+    await toast.present();
+  }
+
 
 }
