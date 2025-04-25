@@ -27,6 +27,9 @@ const routes: Routes = [
         path: 'tab5',
         loadChildren: () => import('../pages/profile-page/profile-page-routing.module').then(m => m.ProfilePagePageRoutingModule)
 
+      },{
+        path:'shake',
+        loadComponent:()=> import ('../components/shake/shake.component').then(m=>m.ShakeComponent)
       },
       {
         path: '',

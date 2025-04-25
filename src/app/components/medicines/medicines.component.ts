@@ -6,6 +6,7 @@ import { IonicModule, NavController, ToastController } from '@ionic/angular';
 import { Messages } from 'src/app/models/messages';
 import { HttpService } from 'src/app/services/http.service';
 import { MappingService } from 'src/app/services/mapping.service';
+import { MedicineService } from 'src/app/services/medicine.service';
 
 @Component({
   selector: 'app-medicines',
@@ -24,7 +25,7 @@ export class MedicinesComponent implements OnInit {
     completion: new FormControl('', [Validators.required]),
   })
   constructor(private http: HttpService, private mapping: MappingService, private router: Router,
-    private toastController: ToastController, private message: Messages, private navCtrl:NavController
+    private toastController: ToastController, private message: Messages, private navCtrl:NavController, private mediService:MedicineService
   ) { }
 
   ngOnInit() {
@@ -39,7 +40,14 @@ export class MedicinesComponent implements OnInit {
     if (this.medicineForm.valid) {
       this.isSuccess = true
       console.log(this.medicineForm.value)
-      this.setToast(this.message.successMessage)
+      this.mediService.addMedicine(this.medicineForm.value).subscribe((res)=>{
+        if(res){
+          this.setToast(this.message.successMessage);
+          setTimeout(() => {
+            this.goBack();
+          }, 2000);
+        }
+      })
 
     } else {
       this.isSuccess = false

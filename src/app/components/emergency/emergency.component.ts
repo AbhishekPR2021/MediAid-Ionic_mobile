@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { IonicModule, IonNav, NavController, ToastController } from '@ionic/angular';
 import { Messages } from 'src/app/models/messages';
 import { EmergencyPagePage } from 'src/app/pages/emergency-page/emergency-page.page';
+import { EmergencyService } from 'src/app/services/emergency.service';
 import { HttpService } from 'src/app/services/http.service';
 import { MappingService } from 'src/app/services/mapping.service';
 
@@ -29,15 +30,15 @@ export class EmergencyComponent  implements OnInit {
   })
 
   constructor(private http:HttpService,private mapping:MappingService,private router:Router,private navCtrl:NavController, private toastController:ToastController,
-    private message:Messages
+    private message:Messages, private emergencyService:EmergencyService
   ) { }
   prevComponent=EmergencyPagePage
   isSuccess:boolean=false
+  
   ngOnInit() {
     this.emergencyMode = this.http.getModel(this.mapping.getEmergencyModelUrl).subscribe((res)=>{
       
       this.emergencyMode = res
-      console.log(this.emergencyMode.subPhases)
     })
   }
   goBack(){
@@ -46,8 +47,14 @@ export class EmergencyComponent  implements OnInit {
   onSubmit(){
     if(this.emergencyForm.valid){
       this.isSuccess = true;
-      this.setToast(this.message.successMessage)
-      console.log('emergency data added', this.emergencyForm.value);
+      this.emergencyService.setPrimaryContact(this.emergencyForm.value).subscribe((res)=>{
+        if(res){
+          this.setToast(this.message.successMessage);
+          setTimeout(() => {
+            this.goBack();
+          }, 2000);
+        }
+      })
     }else{
       this.isSuccess=false;
       this.setToast(this.message.missingFields);

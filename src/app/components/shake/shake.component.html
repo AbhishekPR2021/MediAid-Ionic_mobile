@@ -1,0 +1,25 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Emergency</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-icon name="arrow-back" size="large" (click)="goBack()" class="arrow-back"></ion-icon>
+
+    <!-- Emergency Service Message -->
+    <div class="service-message">
+      <h2 *ngIf="emergencyActive" else #noemergencyActive>Emergency service is active.</h2>
+      <h2 #noemergencyActive>Emergency service will start in</h2>
+    </div>
+  
+  <!-- Emergency Count in Large Font -->
+  <div class="emergency-count">
+    <h1>{{countDownValue}}</h1> <!-- This is the countdown (can be updated with JavaScript) -->
+  </div>
+
+  <!-- Button to Stop the Emergency -->
+  <ion-button expand="full" color="danger" (click)="stopCountdown()">
+    Stop Emergency Service
+  </ion-button>
+</ion-content>

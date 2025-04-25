@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { IonicModule, ToastController } from '@ionic/angular';
 import { Messages } from 'src/app/models/messages';
 import { AuthService } from 'src/app/services/auth.service';
+import { SharedDataService } from 'src/app/services/shared-data.service';
 
 @Component({
   selector: 'app-login',
@@ -22,7 +23,7 @@ export class LoginPage implements OnInit {
 
   })
 
-  constructor(private router:Router,private message:Messages,private toastController:ToastController,private authService:AuthService) { }
+  constructor(private router:Router,private message:Messages,private toastController:ToastController,private authService:AuthService, private sharedJson:SharedDataService) { }
 
   ngOnInit() {
 
@@ -35,8 +36,14 @@ export class LoginPage implements OnInit {
       debugger
       this.isSuccess=true
       //check authentication
-      this.authService.getAuth(this.loginForm.value).subscribe((res)=>{
-        if(res){
+      this.authService.getAuth(this.loginForm.value).subscribe((userData)=>{
+        if(userData){
+          this.authService.setAuth(userData[0].EMAIL).subscribe((res)=>{
+            this.authService.getAuth(this.loginForm.value).subscribe((userData)=>{
+              console.log('userData',userData);
+              this.sharedJson.user = userData[0];
+            })
+          })
           this.authService.authorized = this.isAuthenticated = true
           this.router.navigate(['/tabs'])
         }else{

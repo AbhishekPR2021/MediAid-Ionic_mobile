@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, CUSTOM_ELEMENTS_SCHEMA, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { SharedDataService } from 'src/app/services/shared-data.service';
 
 @Component({
   selector: 'app-doctor-page',
@@ -14,11 +15,15 @@ export class DoctorPagePage implements OnInit {
   isAuthenticated:boolean = false;
   deleteActions:boolean=false
   editActions:boolean=false
-  constructor(private router:Router) { }
-
+  constructor(private router:Router, private sharedJson:SharedDataService) { }
+  sharedDoctor:any
   ngOnInit() {
-
     this.isAuth();
+
+  }
+  ionViewWillEnter(){
+    this.sharedDoctor = this.sharedJson.doctors;
+    console.log('this.sharedDoctor',this.sharedDoctor)
 
   }
   initLoader(){

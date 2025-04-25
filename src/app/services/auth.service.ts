@@ -14,7 +14,7 @@ export class AuthService {
     return new Observable((observer)=>{
       this.sqlService.getAuth(data.email,data.password).then((res)=>{
         if(res){
-          observer.next(true);
+          observer.next(res);
           observer.complete();
         }else{
           observer.next(false);
@@ -23,6 +23,15 @@ export class AuthService {
       })
     })
     
+  }
+  getUserData():Observable<any>{
+    return new Observable((observer)=>{
+      this.sqlService.getUser().then((res)=>{
+        observer.next(res);
+        observer.complete();
+      })
+    })
+
   }
   addUser(data:any):Observable<any>{
     return new Observable((observer)=>{
@@ -34,6 +43,25 @@ export class AuthService {
       })
     })
   }
+  setAuth(email:string):Observable<any>{
+    return new Observable((observer)=>{
+      this.sqlService.setAuth(email).then((res)=>{
+   
+          observer.next(true);
+          observer.complete();    
+       
+      })
+    })
+  }
+  logOut(email:string):Observable<any>{
+    return new Observable((observer)=>{
+      this.sqlService.logOut(email).then(()=>{
+        observer.next(true);
+        observer.complete();
+      })
+    })
+  }
+
     
   
 }

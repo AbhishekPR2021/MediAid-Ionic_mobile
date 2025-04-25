@@ -14,40 +14,34 @@
         <ion-item>
           <ion-label>
             <h2>Name</h2>
-            <p>John Doe</p>
+            <p>{{sharedEmeregency.NAME}}</p>
           </ion-label>
         </ion-item>
         <ion-item>
           <ion-label>
             <h2>Blood Group</h2>
-            <p>O+</p>
+            <p>{{sharedUser.BLOOD_GROUP}}</p>
           </ion-label>
         </ion-item>
         <ion-item>
           <ion-label>
-            <h2>Allergies</h2>
-            <p>Penicillin</p>
+            <h2>Consulting Doctor</h2>
+            <p>{{sharedDoc.NAME}}</p>
           </ion-label>
         </ion-item>
         <ion-item>
           <ion-label>
             <h2>Emergency Contact</h2>
-            <p>+1 234 567 890</p>
+            <p>+91 {{sharedEmeregency.ALTERNATE_PHONE_NUMBER}}</p>
           </ion-label>
         </ion-item>
-        <ion-item>
-          <ion-label>
-            <h2>Medical Conditions</h2>
-            <p>Asthma</p>
-          </ion-label>
-        </ion-item>
+        
       </ion-list>
     </ion-card-content>
   </ion-card>
 
   <div class="btn-group">
     <ion-button color="tertiary" expand="block" (click)="updateDetails()">Update Details</ion-button>
-    <ion-button color="medium" expand="block">Update Emergency Contact</ion-button>
-    <ion-button color="danger" expand="block" strong>Trigger Emergency Alert</ion-button>
+    <ion-button color="danger" expand="block" strong (click)="triggerEmergency()">Trigger Emergency Alert</ion-button>
   </div>
 </ion-content>

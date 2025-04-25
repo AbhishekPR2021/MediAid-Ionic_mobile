@@ -37,6 +37,10 @@ const routes: Routes = [
     loadChildren:()=>import('./pages/login/login-routing.module').then(m=>m.LoginPageRoutingModule)
   },
   {
+    path:'shake',
+    loadComponent:()=>import('./components/shake/shake.component').then(m=>m.ShakeComponent)
+  },
+  {
     path:'',
     loadChildren:()=>import('./pages/loader/loader-routing.module').then(m=>m.LoaderPageRoutingModule)
   },

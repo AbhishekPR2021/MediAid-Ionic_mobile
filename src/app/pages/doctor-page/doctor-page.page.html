@@ -8,23 +8,25 @@
   <div class="card-grid">
 
     <!-- Iterating view -->
-    <ion-card class="interactive-card gradient-blue">
-      <div *ngIf="deleteActions || editActions" class="badge">
-        <ion-button *ngIf="deleteActions" class="badge-icon">
-          <ion-icon name="trash"></ion-icon>
-        </ion-button>  
-        <ion-button *ngIf="editActions" class="badge-icon">
-          <ion-icon name="pencil"></ion-icon>
-        </ion-button>  
-      </div>
-      <ion-card-header>
-        <ion-card-title>Dr. Emily Stone</ion-card-title>
-        <ion-card-subtitle>Cardiologist</ion-card-subtitle>
-      </ion-card-header>
-      <ion-card-content>
-        Specialized in heart health and internal medicine.
-      </ion-card-content>
-    </ion-card>
+     <div *ngFor="let doc of sharedDoctor">
+      <ion-card class="interactive-card gradient-blue">
+        <div *ngIf="deleteActions || editActions" class="badge">
+          <ion-button *ngIf="deleteActions" class="badge-icon">
+            <ion-icon name="trash"></ion-icon>
+          </ion-button>  
+          <ion-button *ngIf="editActions" class="badge-icon">
+            <ion-icon name="pencil"></ion-icon>
+          </ion-button>  
+        </div>
+        <ion-card-header>
+          <ion-card-title>Dr. {{doc.NAME}}</ion-card-title>
+          <ion-card-subtitle>{{doc.SPECIALIZED}}</ion-card-subtitle>
+        </ion-card-header>
+        <ion-card-content>
+          {{doc.ADDRESS}}
+        </ion-card-content>
+      </ion-card>  
+     </div>
     
   </div>
 

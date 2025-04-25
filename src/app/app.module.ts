@@ -12,6 +12,7 @@ import { RegisterComponent } from './components/register/register.component';
 import { HttpClientModule } from '@angular/common/module.d-CnjH8Dlt';
 import { provideHttpClient } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
+import { NativeAudio } from '@capacitor-community/native-audio';
 
 @NgModule({
   declarations: [AppComponent,],
@@ -27,7 +28,8 @@ import { CommonModule } from '@angular/common';
     LoaderPage
 
   ],
-  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy },provideHttpClient()],
+  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy },provideHttpClient(),
+  ],
   bootstrap: [AppComponent],
 })
 
