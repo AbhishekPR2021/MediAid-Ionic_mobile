@@ -83,7 +83,7 @@ export class ShakeComponent  implements OnInit {
       SmsManager.send({
         numbers:numbers,
         text:"THIS IS AN EMERGENCY INITIATED BY "+this.userData.NAME.toUpperCase()+" \n"+this.userData.NAME.toUpperCase() +" IS FACING AN MEDICAL EMERGENCY AND NEEDS IMMEDIATE ATTENTION \n FOLLOWING ARE THE LOCATION DETAILS:\n"+"BLOOD GROUP: "+this.userData.BLOOD_GROUP
-        +"\nPHONE NUMBER: "+this.userData.PHONE_NUMBER+"\n LOCATION: "+this.emergencyData.LOCATION +"\n ADDRESS: "+ this.emergencyData.ADDRESS+"\n Live location: \nLongitude: "+this.liveloc.longitude+"\nlatitude : "+this.liveloc.latitude +"\n\n This message is generated form a medical support app MEDI AID on "+date
+        +"\nPHONE NUMBER: "+this.userData.PHONE_NUMBER+"\n LOCATION: "+this.emergencyData.LOCATION +"\n ADDRESS: "+ this.emergencyData.ADDRESS+"\n Live location: \nLongitude: "+this.liveloc.longitude+"\nlatitude : "+this.liveloc.latitude +"\n\n Note: This message is generated for TESTING purpose form a medical support app MEDI AID on "+date
       }).then(()=>{
 
       }).catch(err=>{

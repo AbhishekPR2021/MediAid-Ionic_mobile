@@ -9,6 +9,7 @@ export class SharedDataService {
   emergency:any=[];
   doctors:any=[];
   diets:any=[];
+  booking:any=[];
 
 
   constructor() { }

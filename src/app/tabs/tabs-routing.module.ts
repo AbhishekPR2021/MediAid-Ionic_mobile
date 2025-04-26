@@ -32,6 +32,10 @@ const routes: Routes = [
         loadComponent:()=> import ('../components/shake/shake.component').then(m=>m.ShakeComponent)
       },
       {
+        path:'booking',
+        loadComponent:()=> import ('../components/booking/booking.component').then(m=>m.BookingComponent)
+      },
+      {
         path: '',
         redirectTo: '/tabs/tab1',
         pathMatch: 'full'

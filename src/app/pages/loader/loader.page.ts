@@ -39,6 +39,7 @@ export class LoaderPage implements OnInit {
             this.getMedicineDetails();
             this.getEmeregencyDetails();
             this.getDietDetails();
+
             this.router.navigate(['/tabs'])
           } else {
             this.router.navigate(['/login'])
@@ -60,6 +61,17 @@ export class LoaderPage implements OnInit {
         datas.push(i)
       }
       this.sharedJson.doctors = datas;
+    })
+  }
+  getBookingDetails(){
+    this.docService.getBooking().subscribe((res)=>{
+      let datas: any = []
+      for (let i of res) {
+        datas.push(i)
+      }
+      this.sharedJson.booking = datas;
+      console.log('bbokin',this.sharedJson.booking)
+
     })
   }
   getDietDetails() {

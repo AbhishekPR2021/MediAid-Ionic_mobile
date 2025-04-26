@@ -45,6 +45,10 @@ const routes: Routes = [
     loadChildren:()=>import('./pages/loader/loader-routing.module').then(m=>m.LoaderPageRoutingModule)
   },
   {
+    path:'booking',
+    loadComponent:()=> import ('./components/booking/booking.component').then(m=>m.BookingComponent)
+  },
+  {
     path:'**',
     redirectTo:'',
     pathMatch:'full'

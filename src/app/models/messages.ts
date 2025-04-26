@@ -10,5 +10,6 @@ import { Injectable } from "@angular/core";
     authenticationFailed="Authentication Failed please try again"
     logoutMessage="Logged out successfully"
     emergencyStopped="Emergency service aborted!"
+    bookedSuccessgully="Successfully Booked"
 
 }

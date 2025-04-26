@@ -56,7 +56,7 @@ export class EmergencyComponent  implements OnInit {
     })
   }
   goBack(){
-    this.router.navigate(['/tab3'])
+    this.navCtrl.back();
   }
   onSubmit(){
     if(this.emergencyForm.valid){

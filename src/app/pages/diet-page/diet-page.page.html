@@ -7,13 +7,14 @@
   <div class="card-grid">
 
     <!-- Iterating view -->
+     <h3 *ngIf="sharedDiet.length==0">Please add your Diet plans</h3>
      <div *ngFor="let diet of sharedDiet">
       <ion-card class="interactive-card gradient-purple">
         <div *ngIf="deleteActions || editActions" class="badge">
           <ion-button *ngIf="deleteActions" class="badge-icon" (click)="deleteDiet(diet.DIET_ID)">
             <ion-icon name="trash"></ion-icon>
           </ion-button>  
-          <ion-button *ngIf="editActions" class="badge-icon" (click)="editDiet()">
+          <ion-button *ngIf="editActions" class="badge-icon" (click)="editDiet(diet.DIET_ID)">
             <ion-icon name="pencil"></ion-icon>
           </ion-button>  
         </div>

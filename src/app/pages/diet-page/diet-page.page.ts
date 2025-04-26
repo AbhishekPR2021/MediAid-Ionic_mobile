@@ -16,7 +16,7 @@ export class DietPagePage implements OnInit {
 
   deleteActions:boolean=false
   editActions:boolean=false
-  sharedDiet:any;
+  sharedDiet:any=[];
   constructor(private router:Router,private sharedJson:SharedDataService,
     private dietService:DietService,
     private ngZone:NgZone
@@ -44,12 +44,12 @@ export class DietPagePage implements OnInit {
     console.log('id',id)
     this.dietService.deleteDiet(id).subscribe((res)=>{
       if(res){
-        for(let k of this.sharedJson.doctors){
-          if(k.DOCT_ID == id){
-            let indx = this.sharedJson.doctors.findIndex((m: { DOCT_ID: number; })=>m.DOCT_ID=== id);
+        for(let k of this.sharedJson.diets){
+          if(k.DIET_ID == id){
+            let indx = this.sharedJson.diets.findIndex((m: { DIET_ID: number; })=>m.DIET_ID=== id);
             if(indx !==-1){
               this.ngZone.run(()=>{
-                this.sharedJson.doctors.splice(indx,1)
+                this.sharedJson.diets.splice(indx,1)
             })
           }
         }
@@ -58,8 +58,15 @@ export class DietPagePage implements OnInit {
       }
     })
   }
-  editDiet(){
+  editDiet(id:number){
+    const navigationExtras={
+      state:{
+        data:'edit',
+        value: id
 
+      }
+    }
+    this.router.navigate(['/addDiet'],navigationExtras)
   }
 
 

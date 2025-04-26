@@ -18,6 +18,15 @@ export class DietService {
       })
     })
   }
+  ediDiet(data:any, id:number):Observable<any>{
+    return new Observable((observer)=>{
+      console.log('inside service')
+      this.sqliteService.editDiet(data.courseName, data.duration, data.description, data.videos, id).then((res)=>{
+        observer.next(res);
+        observer.complete();
+      })
+    })
+  }
   getDiet():Observable<any>{
     return new Observable((observer)=>{
       this.sqliteService.getDiet().then((res)=>{

@@ -1,0 +1,52 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Doctor Consultation</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Book a Consultation</ion-card-title>
+    </ion-card-header>
+
+    <form [formGroup]="bookingForm" (ngSubmit)="onSubmit()">
+
+    <ion-card-content>
+      <ion-item>
+        <ion-label position="floating">Select Date</ion-label><br>
+        <ion-datetime id="datetime" presentation="date" formControlName="date"></ion-datetime>        
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Select Time</ion-label>
+        <ion-input type="time" formControlName="time"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Describe Illness</ion-label>
+        <ion-input type="text" placeholder="E.g., Fever, Headache" formControlName="illness"></ion-input>
+      </ion-item>
+
+      <ion-button expand="block" class="ion-margin-top" type="submit">
+        Book Consultation
+      </ion-button>
+    </ion-card-content>
+  </form>
+
+  </ion-card>
+
+  <!-- Dummy Booking Details (Static Display) -->
+  <ion-card color="success" *ngIf="isBooked">
+    <ion-card-header>
+      <ion-card-title>Booking Confirmed!</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <p><strong>Date:</strong> {{bookingData.DATE}}</p>
+      <p><strong>Time:</strong> {{bookingData.TIME}}</p>
+      <p><strong>Illness:</strong> {{bookingData.ILLNESS}}</p>
+    </ion-card-content>
+  </ion-card>
+
+</ion-content>

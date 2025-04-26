@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, Observer } from 'rxjs';
 import { SqliteService } from './sqlite.service';
+import { SmsManager } from '@byteowls/capacitor-sms';
 
 @Injectable({
   providedIn: 'root'
@@ -26,6 +27,13 @@ export class DoctorService {
       })
     })
    }
+   getBooking():Observable<any>{
+    return new Observable((observer)=>{
+      this.sqlService.getBooking().then((res)=>{
+        observer.next(res);
+      })
+    })
+   }
   deleteDoctor(id:number):Observable<any> {
     return new Observable((observer)=>{
       this.sqlService.deleteDoctors(id).then((res)=>{
@@ -39,10 +47,22 @@ export class DoctorService {
       })
     })
    }
-  setConsultingDoc():Observable<any> {
+  setConsultingDoc(id:number, data:any):Observable<any> {
     return new Observable((observer)=>{
-      
+      this.sqlService.bookDoc(id, data.date, data.time, data.illness).then((res)=>{
+        observer.next(res);
+        observer.complete();
+      })
     })
    }
+   cancelBooking(id:number):Observable<any> {
+    return new Observable((observer)=>{
+      this.sqlService.cancelBooking(id).then((res)=>{
+        observer.next(res);
+        observer.complete();
+      })
+    })
+   }
+   
 
 }

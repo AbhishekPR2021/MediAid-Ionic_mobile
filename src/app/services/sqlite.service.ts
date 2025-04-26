@@ -188,6 +188,30 @@ export class SqliteService {
   
     })
   }
+  async bookDoc(id:number, date:string, time:string, illness:string):Promise<any>{
+    return new Promise(async (resolve, reject)=>{
+      try{
+        let insert = 'INSERT OR REPLACE INTO BOOKING (DOCT_ID, DATE, TIME, ILLNESS, STATUS) VALUES (?,?,?,?,?)';
+        let result = await this.db!.run(insert,[id,date, time, illness,1]);
+        resolve(result.changes?.lastId);
+      }catch(err){
+        reject(false)
+        console.log('book doc err')
+      }
+    })
+  }
+  async cancelBooking(id:number):Promise<any>{
+    return new Promise(async(resolve, reject)=>{
+      try{
+        let qry= 'UPDATE BOOKING SET STATUS = ? WHERE DOCT_ID = ?';
+        let result = await this.db!.run(qry,[0,id]);
+        resolve(true);
+      }catch(err){
+        reject(err);
+        console.log('cancel book err',err)
+      }
+    } )
+  }
 
   async getDoctors():Promise<any>{
     return new Promise(async (resolve, reject)=>{
@@ -200,8 +224,21 @@ export class SqliteService {
         console.log('get doctos error',err);
         reject(false);
       }
-
     })
+  }
+  async getBooking():Promise<any>{
+    return new Promise(async (resolve, reject)=>{
+      try{
+        let insertQry = 'SELECT * FROM BOOKING';
+        const result = await this.db!.query(insertQry);
+
+        resolve(result.values);
+      }catch(err){
+        console.log('get booking error',err);
+        reject(false);
+      }
+    })
+
   }
 
   // diet operations
@@ -219,7 +256,20 @@ export class SqliteService {
       }
     })
   }
-  async editDiet() { }
+  async editDiet(courseName:string, duration:string, description:string, videos:string, id:number):Promise<any> { 
+    return new Promise(async(resolve, reject)=>{
+      try{
+        let update = 'UPDATE DIETS SET COURSE_NAME = ?, DURATION = ?, DESCRIPTION = ?, VIDEOS = ? WHERE DIET_ID = ?';
+        let result = await this.db!.run(update,[courseName, duration, description, videos,id]);
+        resolve(true);
+        
+      }catch(err){
+        console.log('diet edit er',err)
+        reject(err);
+
+      }
+    })
+  }
   async deleteDiet(id:number):Promise<boolean> { 
     return new Promise(async (resolve, reject)=>{
       try{
