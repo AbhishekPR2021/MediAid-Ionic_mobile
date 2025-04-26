@@ -33,14 +33,12 @@ export class MedicinesComponent implements OnInit {
     this.medicineModel = this.http.getModel(this.mapping.getMedicineModelUrl).subscribe((res) => {
 
       this.medicineModel = res
-      console.log(this.medicineModel.subPhases)
     })
   }
   onSubmit() {
     debugger
     if (this.medicineForm.valid) {
       this.isSuccess = true
-      console.log(this.medicineForm.value)
       this.mediService.addMedicine(this.medicineForm.value).subscribe((res)=>{
         if(res){
           let model = {MEDICINE_ID:'',MEDICINE_NAME:'',TIME_TO_TAKE:'',COMPLETION:''};

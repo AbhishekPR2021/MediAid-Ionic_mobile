@@ -3,7 +3,6 @@ import { Component, CUSTOM_ELEMENTS_SCHEMA, OnInit } from '@angular/core';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { IonicModule, NavController, ToastController } from '@ionic/angular';
-import { timeout } from 'rxjs';
 import { Messages } from 'src/app/models/messages';
 import { LoaderPage } from 'src/app/pages/loader/loader.page';
 import { DoctorService } from 'src/app/services/doctor.service';
@@ -43,11 +42,9 @@ export class DoctorsComponent implements OnInit {
    
 
   ngOnInit() {
-    debugger
     this.doctorsModel = this.http.getModel(this.mapping.getDoctorModelUrl).subscribe((res) => {
 
       this.doctorsModel = res
-      console.log(this.doctorsModel.subPhases)
 
     })
 
@@ -58,7 +55,6 @@ export class DoctorsComponent implements OnInit {
   onSubmit() {
     if (this.doctorForm.valid) {
       this.isSuccess = true
-      console.log(this.doctorForm.value)
       if(this.isEdit){
         this.docService
       }else{

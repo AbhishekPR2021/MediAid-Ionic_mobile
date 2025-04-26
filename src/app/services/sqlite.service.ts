@@ -49,7 +49,6 @@ export class SqliteService {
     return new Promise(async (resolve, reject) => {
       let getQuery = 'SELECT * FROM USER WHERE EMAIL = ? AND PASSWORD = ?';
       let result = await this.db!.query(getQuery, [email, password]);
-      console.log('user details db resp', result.values)
       if (result.values?.length && result.values.length > 0) {
         resolve(result.values)
       } else {
@@ -64,6 +63,8 @@ export class SqliteService {
         let result = await this.db!.query(qry);
         if(result.values?.length && result.values.length>0){
           resolve(result.values);
+        }else{
+          resolve(false)
         }
       }catch(err){
         reject(false)
@@ -204,25 +205,62 @@ export class SqliteService {
   }
 
   // diet operations
-  async addDiet() { }
+  async addDiet(courseName:string, duration:string, description:string, videos:string):Promise<any> { 
+    return new Promise(async(resolve, reject)=>{
+      try{
+        let insert = 'INSERT OR REPLACE INTO DIETS(COURSE_NAME, DURATION, DESCRIPTION, VIDEOS) VALUES(?,?,?,?)';
+        let result = await this.db!.run(insert,[courseName, duration, description, videos]);
+        resolve(result.changes?.lastId);
+        
+      }catch(err){
+        console.log('diet add er',err)
+        reject(err);
+
+      }
+    })
+  }
   async editDiet() { }
-  async deleteDiet() { }
+  async deleteDiet(id:number):Promise<boolean> { 
+    return new Promise(async (resolve, reject)=>{
+      try{
+        let insertQry = 'DELETE FROM DIETS WHERE DIET_ID = ?';
+        await this.db!.run(insertQry, [id])  ;
+        resolve(true);
+      }catch(err){
+        console.log('delete diet error',err);
+        reject(false);
+      }
+  
+    })
+  }
+  async getDiet():Promise<any>{
+    return new Promise(async (resolve, reject)=>{
+      try{
+        let qry = 'SELECT * FROM DIETS';
+        let result = await this.db?.query(qry);
+        console.log('result',result)
+        resolve(result?.values);
+      
+      }catch(err){
+        reject(err)
+      }
+    })
+  }
 
   // emergency operations 
   async addEmergency(name:string, phoneNumber:string, altPhoneNumber:string, age:string, address:string,hospitalContact:string, location:string, report:string):Promise<any> { 
     return new Promise(async(resolve, reject)=>{
       try {
         let insertQry = 'INSERT OR REPLACE INTO EMERGENCY(NAME,PHONE_NUMBER,ALTERNATE_PHONE_NUMBER,AGE, ADDRESS, HOSPITAL_CONTACT, LOCATION, REPORT) VALUES (?,?,?,?,?,?,?,?)';
-        let result = await this.db!.run(insertQry, [name, phoneNumber, altPhoneNumber, age, address, location, report]);
+        let result = await this.db!.run(insertQry, [name, phoneNumber, altPhoneNumber, age, address, hospitalContact, location, report]);
         resolve(result.changes?.lastId);
       } catch (err) {
         console.log('add emergency err',err);
         reject(false);
       }
     })
-
-
   }
+
   async editEmergency(name: string, phoneNumber: string, altPhoneNumber: string, age:number, address: string, hospitalContact:string,  location: string, report: string, id:number):Promise<any> { 
     return new Promise(async(resolve, reject)=>{
       try{

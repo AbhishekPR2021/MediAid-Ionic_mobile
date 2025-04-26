@@ -1,18 +1,21 @@
 <ion-content [fullscreen]="true" class="ion-padding custom-bg">
   <ion-icon name="arrow-back"size="large" (click)="goBack()" class="arrow-back"></ion-icon>
   <div class="form-container">
-    <div *ngFor="let item of dietModel.subPhases">
-      <h2 *ngIf="item.id=='header'" class="form-title">{{item.label}}</h2>
-      <p *ngIf="item.id=='subheader'" class="form-subtitle">{{item.label}}</p>
+    <form [formGroup]="dietForm" (ngSubmit)="onSubmit()">
+      <div *ngFor="let item of dietModel.subPhases">
+        <h2 *ngIf="item.id=='header'" class="form-title">{{item.label}}</h2>
+        <p *ngIf="item.id=='subheader'" class="form-subtitle">{{item.label}}</p>
+    
+        <ion-item *ngIf="item.id !=='header' && item.id !=='subheader' && item.id !=='save'" class="custom-item">
+          <ion-label position="floating">{{item.label}}</ion-label>
+          <ion-input type="{{item.type}}" formControlName="{{item.id}}"></ion-input>
+        </ion-item>
+        <ion-button *ngIf="item.type == 'submit'" expand="block" color="primary" class="custom-btn" type="{{item.type}}">
+          {{item.label}}
+        </ion-button>
+      </div>
   
-      <ion-item *ngIf="item.id !=='header' && item.id !=='subheader'" class="custom-item">
-        <ion-label position="floating">{{item.label}}</ion-label>
-        <ion-input type="{{item.type}}"></ion-input>
-      </ion-item>
-      <ion-button *ngIf="item.type == 'button'" expand="block" color="primary" class="custom-btn">
-        {{item.label}}
-      </ion-button>
-    </div>
+    </form>
 
 
     

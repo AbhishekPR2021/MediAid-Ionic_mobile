@@ -27,13 +27,13 @@
         },
         {
             "id":"videos",
-            "label":"Diet Videos",
+            "label":"Diet Videos (urls)",
             "type":"videos"
         },
         {
             "id":"save",
             "label":"Save",
-            "type":"button"
+            "type":"submit"
         }
     ]
     }

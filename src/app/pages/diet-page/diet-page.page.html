@@ -7,23 +7,25 @@
   <div class="card-grid">
 
     <!-- Iterating view -->
-    <ion-card class="interactive-card gradient-purple">
-      <div *ngIf="deleteActions || editActions" class="badge">
-        <ion-button *ngIf="deleteActions" class="badge-icon">
-          <ion-icon name="trash"></ion-icon>
-        </ion-button>  
-        <ion-button *ngIf="editActions" class="badge-icon">
-          <ion-icon name="pencil"></ion-icon>
-        </ion-button>  
-      </div>
-      <ion-card-header>
-        <ion-card-title>Dr. Emily Stone</ion-card-title>
-        <ion-card-subtitle>Cardiologist</ion-card-subtitle>
-      </ion-card-header>
-      <ion-card-content>
-        Specialized in heart health and internal medicine.
-      </ion-card-content>
-    </ion-card>
+     <div *ngFor="let diet of sharedDiet">
+      <ion-card class="interactive-card gradient-purple">
+        <div *ngIf="deleteActions || editActions" class="badge">
+          <ion-button *ngIf="deleteActions" class="badge-icon" (click)="deleteDiet(diet.DIET_ID)">
+            <ion-icon name="trash"></ion-icon>
+          </ion-button>  
+          <ion-button *ngIf="editActions" class="badge-icon" (click)="editDiet()">
+            <ion-icon name="pencil"></ion-icon>
+          </ion-button>  
+        </div>
+        <ion-card-header>
+          <ion-card-title>{{diet.COURSE_NAME}}</ion-card-title>
+          <ion-card-subtitle>{{diet.DURATION}}</ion-card-subtitle>
+        </ion-card-header>
+        <ion-card-content>
+          {{diet.DESCRIPTION}}
+        </ion-card-content>
+      </ion-card>  
+     </div>
     
   </div>
 

@@ -21,7 +21,6 @@ export class MedicinePagePage implements OnInit {
 
   ngOnInit() {
     this.sharedMedicine = this.sharedJson.medicine;
-    console.log('this.sharedMedicine',this.sharedMedicine)
   }
 
   deleteAction(){

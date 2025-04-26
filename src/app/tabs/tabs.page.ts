@@ -15,7 +15,6 @@ export class TabsPage {
     this.startShakeDetection();
   }
   startShakeDetection() {
-    console.log('shake initiated')
     let shakeThreshold = 15;  // Adjust the threshold to detect shake
     let lastX = 0, lastY = 0, lastZ = 0;
 

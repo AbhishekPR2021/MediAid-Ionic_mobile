@@ -7,7 +7,7 @@
   <div class="card-grid">
 
     <!-- iterating view -->
-     <ion-title *ngIf="!sharedMedicine">Please add your Medicines</ion-title>
+     <ion-title *ngIf="sharedMedicine.length==0">Please add your Medicines</ion-title>
      <div *ngFor="let med of sharedMedicine">
       <ion-card class="interactive-card gradient-green" >
         

@@ -2,6 +2,9 @@
 include ':capacitor-android'
 project(':capacitor-android').projectDir = new File('../node_modules/@capacitor/android/capacitor')
 
+include ':byteowls-capacitor-sms'
+project(':byteowls-capacitor-sms').projectDir = new File('../node_modules/@byteowls/capacitor-sms/android')
+
 include ':capacitor-community-native-audio'
 project(':capacitor-community-native-audio').projectDir = new File('../node_modules/@capacitor-community/native-audio/android')
 
@@ -10,6 +13,9 @@ project(':capacitor-community-sqlite').projectDir = new File('../node_modules/@c
 
 include ':capacitor-app'
 project(':capacitor-app').projectDir = new File('../node_modules/@capacitor/app/android')
+
+include ':capacitor-geolocation'
+project(':capacitor-geolocation').projectDir = new File('../node_modules/@capacitor/geolocation/android')
 
 include ':capacitor-haptics'
 project(':capacitor-haptics').projectDir = new File('../node_modules/@capacitor/haptics/android')

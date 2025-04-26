@@ -16,6 +16,14 @@ export class EmergencyService {
       })
     })
   }
+  editPrimaryContact(data:any):Observable<any>{
+    return new Observable((observer)=>{
+      this.sqlService.editEmergency(data.name, data.phoneNumber, data.altPhoneNumber, data.age, data.address, data.hospitalContact, data.location, data.report, data.id).then((res)=>{
+        observer.next(res);
+        observer.complete();
+      })
+    })
+  }
   getPrimaryContact():Observable<any>{
     return new Observable((observer)=>{
       this.sqlService.getEmergency().then((res)=>{

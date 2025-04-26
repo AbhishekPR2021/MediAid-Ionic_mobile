@@ -4,11 +4,11 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class SharedDataService {
-  user:any;
-  medicine:any;
-  emergency:any;
-  doctors:any;
-  diets:any;
+  user:any=[];
+  medicine:any=[];
+  emergency:any=[];
+  doctors:any=[];
+  diets:any=[];
 
 
   constructor() { }

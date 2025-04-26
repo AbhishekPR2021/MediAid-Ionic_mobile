@@ -40,7 +40,6 @@ export class LoginPage implements OnInit {
         if(userData){
           this.authService.setAuth(userData[0].EMAIL).subscribe((res)=>{
             this.authService.getAuth(this.loginForm.value).subscribe((userData)=>{
-              console.log('userData',userData);
               this.sharedJson.user = userData[0];
             })
           })

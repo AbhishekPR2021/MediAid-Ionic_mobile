@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, CUSTOM_ELEMENTS_SCHEMA, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ToastController } from '@ionic/angular';
+import { EmergencyModel } from 'src/app/models/EmergenctModel';
 import { Messages } from 'src/app/models/messages';
 import { AuthService } from 'src/app/services/auth.service';
 import { SharedDataService } from 'src/app/services/shared-data.service';
@@ -16,12 +17,13 @@ import { SharedDataService } from 'src/app/services/shared-data.service';
 export class ProfilePagePage implements OnInit {
   isSuccess = false;
   sharedUser:any;
-  shEmerg:any;
-  constructor(private router:Router,private sharedJson:SharedDataService, private authService: AuthService, private toastController:ToastController, private message:Messages) { }
+  shEmerg:EmergencyModel= new EmergencyModel();
+  constructor(private router:Router,private sharedJson:SharedDataService, private authService: AuthService, private toastController:ToastController, private message:Messages) {
+    this.sharedUser = this.sharedJson.user;
+    this.shEmerg = this.sharedJson.emergency[0]??this.shEmerg;
+   }
 
   ngOnInit() {
-    this.sharedUser = this.sharedJson.user;
-    this.shEmerg = this.sharedJson.emergency[0];
   }
   updateProfile(){
     const navigationExtras={
@@ -32,7 +34,6 @@ export class ProfilePagePage implements OnInit {
     this.router.navigate(['/register'],navigationExtras)
   }
   logOut(){
-    console.log('this.sharedJson.user.email',this.sharedJson.user.email)
     this.authService.logOut(this.sharedJson.user.email).subscribe((res)=>{
       if(res){
         setTimeout(()=>{

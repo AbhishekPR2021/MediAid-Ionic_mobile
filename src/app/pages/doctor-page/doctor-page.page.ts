@@ -24,7 +24,6 @@ export class DoctorPagePage implements OnInit {
   }
   ionViewWillEnter(){
     this.sharedDoctor = this.sharedJson.doctors;
-    console.log('this.sharedDoctor',this.sharedDoctor)
 
   }
   initLoader(){
@@ -49,7 +48,6 @@ export class DoctorPagePage implements OnInit {
   }
   deleteDoctor(id:number){
     this.doctoservice.deleteDoctor(id).subscribe((res)=>{
-      console.log('res',res,id,this.sharedJson.doctors)
       if(res){
         for(let k of this.sharedJson.doctors){
           if(k.DOCT_ID == id){
