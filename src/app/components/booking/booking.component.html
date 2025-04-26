@@ -43,9 +43,12 @@
       <ion-card-title>Booking Confirmed!</ion-card-title>
     </ion-card-header>
     <ion-card-content>
+      <p><strong>Doctor:</strong> {{docName}}</p>
+      <p><strong>Specialized:</strong> {{specialized}}</p>
       <p><strong>Date:</strong> {{bookingData.DATE}}</p>
       <p><strong>Time:</strong> {{bookingData.TIME}}</p>
       <p><strong>Illness:</strong> {{bookingData.ILLNESS}}</p>
+      <ion-button color="danger" (click)="cancelBooking()">CANCEL BOOKING</ion-button>
     </ion-card-content>
   </ion-card>
 

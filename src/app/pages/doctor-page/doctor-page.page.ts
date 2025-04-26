@@ -73,11 +73,13 @@ export class DoctorPagePage implements OnInit {
       }
     })
   }
-  consultDoctor(id:number){
+  consultDoctor(id:number, name:string, spec:string){
     const navigationExtras={
       state:{
         data:'booking',
-        value: id
+        value: id,
+        name:name,
+        specialized: spec
 
       }
     }

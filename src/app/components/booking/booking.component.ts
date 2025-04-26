@@ -20,6 +20,9 @@ export class BookingComponent  implements OnInit {
   isSuccess = false;
   bookingData:any=[];
   isBooked = false;
+  docName:any;
+  specialized:any;
+
 
   bookingForm = new FormGroup({
     date: new FormControl('',[Validators.required]),
@@ -41,6 +44,8 @@ export class BookingComponent  implements OnInit {
       if(this.router?.getCurrentNavigation()?.extras.state){
         let val = this.router.getCurrentNavigation()!.extras.state;
         this.docId = val!['value'] ? val!['value'] : '';
+        this.docName = val!['name'] ? val!['name']:'';
+        this.specialized = val!['specialized'] ? val!['specialized']:'';
         
       }
     })
@@ -52,17 +57,32 @@ export class BookingComponent  implements OnInit {
     this.navCtrl.back()
 
   }
+  ionViewWillEnter(){
+    console.log('data',this.sharedJson.booking);
+    for (let k of this.sharedJson.booking) {
+      if (k.DOCT_ID == this.docId) {
+        let indx = this.sharedJson.booking.findIndex((m: { DOCT_ID: number; }) => m.DOCT_ID === this.docId);
+        if (indx !== -1) {
+          this.ngZone.run(() => {
+            this.bookingData = this.sharedJson.booking[indx]
+            this.isBooked= this.bookingData.STATUS;
+          })
+        }
+      }
+    }
+  }
   onSubmit(){
     if(this.bookingForm.valid){
       this.isSuccess = true;
       if(this.docId){
         this.doctorService.setConsultingDoc(this.docId, this.bookingForm.value).subscribe(async (res)=>{
           if(res){
-            let model = {BOOKING_ID:'',DATE:'',TIME:'',ILLNESS:'', STATUS:false};
+            let model = {BOOKING_ID:'',DATE:'',TIME:'',ILLNESS:'', STATUS:false, DOCT_ID:''};
             model.BOOKING_ID = res
             model.DATE = this.bookingForm.value.date!;
             model.TIME = this.bookingForm.value.time!;
             model.ILLNESS = this.bookingForm.value.illness!;
+            model.DOCT_ID= this.docId;
             model.STATUS = true;
   
             this.sharedJson.booking.push(model);
@@ -91,12 +111,13 @@ export class BookingComponent  implements OnInit {
       this.setToast(this.message.missingFields)
     }
   }
-  cancelBooking(id: number) {
-    this.doctorService.cancelBooking(id).subscribe((res) => {
+  cancelBooking() {
+    this.doctorService.cancelBooking(this.docId).subscribe((res) => {
       if (res) {
+        console.log('adsas',this.sharedJson.booking, this.docId)
         for (let k of this.sharedJson.booking) {
-          if (k.DOCT_ID == id) {
-            let indx = this.sharedJson.booking.findIndex((m: { DOCT_ID: number; }) => m.DOCT_ID === id);
+          if (k.DOCT_ID == this.docId) {
+            let indx = this.sharedJson.booking.findIndex((m: { DOCT_ID: number; }) => m.DOCT_ID === this.docId);
             if (indx !== -1) {
               this.ngZone.run(() => {
                 this.sharedJson.booking[indx].STATUS = false;
