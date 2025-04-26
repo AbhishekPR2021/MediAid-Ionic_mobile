@@ -23,7 +23,7 @@ export class EmergencyPagePage implements OnInit {
 
   ngOnInit() {
     this.sharedUser = this.sharedJson.user;
-    this.sharedDoc = this.sharedJson.doctors[0]
+    this.sharedDoc = this.sharedJson.doctors[0]? this.sharedJson.doctors[0]: this.sharedDoc;
   }
   ionViewWillEnter(){
     this.sharedEmeregency = this.sharedJson.emergency[0]?this.sharedJson.emergency[0]: this.sharedEmeregency;
